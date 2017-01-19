@@ -1,0 +1,111 @@
+package com.algav;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+import com.algav.HybridesTries.Ajout;
+import com.algav.HybridesTries.HybridesTries;
+import com.algav.patricia.PatriciaTrie;
+
+public class Presentation {
+	public static void main (String args[]) throws CloneNotSupportedException{
+		String filename = "./Tries/shakespeare/macbeth.txt";
+		ArrayList<String> wordsInFile = null;
+		ArrayList<String> wordsInFileWithoutDuplicate =null;
+		HybridesTries h = new HybridesTries();
+		HybridesTries heq = new HybridesTries();
+		PatriciaTrie p = new PatriciaTrie();
+		String word2add = "inserer";
+		ArrayList<String> deletedWords = null;
+		String searchWord = "the";
+		int nbWords2Del = 20;
+		try {
+			 wordsInFile = Utility.convert2list(filename);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//Comparaison.construction(wordsInFile);
+		
+		// Construction de nos arbres
+		
+		System.out.println("Nous allons creez 3 arbres: Hb, Pat et HbEq");
+		System.out.print("ajouts des mots de l'oeuvre dans "
+				+ "l'hybrideTrie en cours d'execution ...");
+		
+		for(int i = 0 ; i < wordsInFile.size();i++){
+			  h = Ajout.ajoutString(wordsInFile.get(i), h);
+			  
+		 }
+		System.out.println("Fin");
+		
+		System.out.print("ajouts des mots de l'oeuvre dans "
+				+ "le patriciatrie en cours d'execution .."
+				+ ".Ceci peut prendre quelques secondes");
+		
+		for(int i = 0 ; i < wordsInFile.size();i++){
+			  p.ajout(wordsInFile.get(i));
+			 // heq = Ajout.ajoutStringEquilibrage(wordsInFile.get(i), heq);
+			  
+		 }
+		System.out.println("Fin");
+		
+		//heq = h;;
+		//Ajout.supression(h, "warranted");
+		//System.out.println(Ajout.liste(heq).size() == Ajout.liste(h).size());
+		//System.out.println("On insere le mot :"+word2add+" dans nos 3 arbres");
+		//Comparaison.addWord(h, p, heq, "inserer");
+		
+		try {
+			wordsInFileWithoutDuplicate = Utility.convert2listWithoutDuplicate(filename);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		deletedWords = Utility.randomWords(wordsInFileWithoutDuplicate,
+				nbWords2Del, wordsInFileWithoutDuplicate.size());
+		/*deletedWords = new ArrayList<String>();
+		deletedWords.add("warranted");
+		deletedWords.add("bove");
+		deletedWords.add("heels");
+		deletedWords.add("hanging");*/
+		/*HybridesTries test= new HybridesTries();
+		test = Ajout.ajoutString("place", test);
+		test = Ajout.ajoutString("tragedy", test);*/
+		//System.out.println("On supprime "+deletedWords+" mot prix au hasard, dans nos 3 arbres");
+		//System.out.println(Ajout.liste(h).contains("place"));
+		/*deletedWords = new ArrayList<String>();
+		deletedWords.add("causes");*/
+		/*System.out.println(Ajout.liste(h).contains("causes"));
+		System.out.println(Ajout.liste(heq).contains("causes"));*/
+		//Calculation.deleteWordsHybride(h, deletedWords);
+		Comparaison.deleteWords(h, p, heq, deletedWords);
+	
+		/*System.out.println("temps d'equlibrage de h :"+Calculation.equilibrage(h));
+		Comparaison.deleteWords(Ajout.equilibrage(h), p, heq, deletedWords);*/
+		/*System.out.println("temps de supression dans un arbre equilibre: "
+		+Calculation.deleteWordsHybride(heq, deletedWords));*/
+		//System.out.println(x);
+		/*System.out.println(hset);
+		System.out.println(Ajout.liste(h));*/
+		//Ajout.supression(h, "youth");
+		
+		/*System.out.println("Comparaisons des profondeurs");
+		//Comparaison.profondeur(h, p, heq);
+		
+		System.out.println("On cherche le mot :"+searchWord);
+		Comparaison.searchWord(h, p, heq, searchWord);
+		
+		System.out.println("Le temps d'equilibrage est :"+Calculation.equilibrage(h));*/
+		
+		
+		
+		
+	}
+	
+	
+
+}

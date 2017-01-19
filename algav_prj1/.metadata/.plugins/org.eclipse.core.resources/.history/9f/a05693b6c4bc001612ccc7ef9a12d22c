@@ -1,0 +1,20 @@
+package com.algav.affichage;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import com.algav.patricia.PatriciaTrie;
+
+public class AffichagePatricia {
+
+	public static void afficherPat(PatriciaTrie p, String filename){
+		
+	}
+	
+	public static String fileHeader(String graphName){
+		return ("digraph " + graphName + " {");
+	}
+	public static void main(String[] s){
+		System.out.println(fileHeader("test"));
+	}
+}

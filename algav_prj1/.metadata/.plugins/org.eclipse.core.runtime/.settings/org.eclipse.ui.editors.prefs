@@ -1,0 +1,16 @@
+PHPReadOccurrenceIndicationColor=255,207,187
+PHPWriteOccurrenceIndicationColor=255,207,187
+asOccurencesIndicationColor=255,207,187
+currentIPColor=224,224,255
+deletionIndicationColor=155,86,86
+eclipse.preferences.version=1
+filteredSearchResultIndicationColor=255,223,153
+javaScriptOccurrenceIndicationColor=255,207,187
+matchingTagIndicationColor=255,207,187
+occurrenceIndicationColor=255,207,187
+org.eclipse.cdt.ui.occurrenceIndicationColor=255,207,187
+overviewRuler_migration=migrated_3.1
+pydevOccurrenceIndicationColor=255,207,187
+searchResultIndicationColor=255,223,153
+secondaryIPColor=224,224,255
+writeOccurrenceIndicationColor=255,207,187

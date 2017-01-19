@@ -1,0 +1,146 @@
+package com.algav.patricia.transformation;
+
+import com.algav.HybridesTries.HybridesTries;
+import com.algav.HybridesTries.ValueNonVide;
+import com.algav.HybridesTries.ValueVide;
+import com.algav.HybridesTries.Ajout;
+import com.algav.patricia.PatriciaTrie;
+import com.algav.patricia.TestPatricia;
+
+import static com.algav.patricia.string.StringManipulation.*;
+
+public class TransformationHYBtoPAT {
+	
+	public static PatriciaTrie transformationHybToPat(HybridesTries h){
+		return  transHybToPat(new PatriciaTrie(),  h);
+	}
+	
+//signal == -1: we are processing a node which is an inf or sup of previous node
+//signal >-1: we are processing a node which is a eq of previous node, index if 
+/*
+public static PatriciaTrie transHybToPat(PatriciaTrie p, HybridesTries h, int index){
+	int i = (int)(h.getRacine().getKey());
+	if (index == -1){
+		
+		if (h.getRacine().getValue() instanceof ValueNonVide)
+			p.setWord(i, concatEpsilon(String.valueOf(h.getRacine().getKey())));
+		else
+			p.setWord(i, String.valueOf(h.getRacine().getKey()));
+		
+		if(!h.getEq().isVide()&&(h.getEq().getInf().isVide()||h.getEq().getSup().isVide()))
+			p = transHybToPat(p, h.getEq(), i);
+		else if(!h.getEq().isVide()){
+			p.setSon(i, transHybToPat(new PatriciaTrie(), h.getEq(), -1));
+		}
+			
+	}else{
+		if (containsEpsilon(p.getWord(index))){
+			p.setWord(index, truncEpsilon(p.getWord(index)));
+			PatriciaTrie son1 = new PatriciaTrie();
+			son1.setCase(0, String.valueOf((char)0));
+			
+			if (h.getRacine().getValue() instanceof ValueNonVide)
+				son1.setWord(i, concatEpsilon(String.valueOf(h.getRacine().getKey())));
+			else
+				son1.setWord(i, String.valueOf(h.getRacine().getKey()));
+			
+			p.setSon(index, son1);
+			
+			if(!h.getEq().isVide()&&(h.getEq().getInf().isVide()||h.getEq().getSup().isVide()))
+				p.setSon(index, transHybToPat((PatriciaTrie)p.getSon(index), h.getEq(), i));
+			else if (!h.getEq().isVide()){
+				son1.setSon(i, transHybToPat(new PatriciaTrie(),h.getEq(),-1));
+			//	p.setSon(index, transHybToPat((PatriciaTrie)p.getSon(index), h.getEq(), i));
+			}
+		}else{
+			if (h.getRacine().getValue() instanceof ValueNonVide)
+				p.setWord(index, concatBis(p.getWord(index), concatEpsilon(String.valueOf(h.getRacine().getKey()))));
+
+			else
+				p.setWord(index, concatBis(p.getWord(index),String.valueOf(h.getRacine().getKey())));
+			
+			if(!h.getEq().isVide()&&(h.getEq().getInf().isVide()||h.getEq().getSup().isVide()))
+				p = transHybToPat(p, h.getEq(), index);
+			else if (!h.getEq().isVide()){
+				p.setSon(index, transHybToPat((PatriciaTrie)p.getSon(index),h.getEq(), -1));
+			}
+		}
+	
+		//if (h.troisFilsVide()) //si h.estFeuille
+			//return p;
+	}
+		if (!h.getInf().isVide())
+			p = transHybToPat(p,h.getInf(), -1);
+		if (!h.getSup().isVide())
+			p = transHybToPat(p,h.getSup(), -1);
+	
+	return p;
+}
+*/
+	
+	public static PatriciaTrie transHybToPat(PatriciaTrie p, HybridesTries h){
+		
+		int i = (int)(h.getRacine().getKey());
+		
+		p.setWord(i, String.valueOf(h.getRacine().getKey()));
+		
+		if (h.getRacine().getValue() instanceof ValueNonVide){
+			if(h.getEq().isVide())
+				p.setWord(i, concatEpsilon(String.valueOf(h.getRacine().getKey())));
+			else
+				p.setWord(i,String.valueOf(h.getRacine().getKey()));
+		}
+		
+		if (h.troisFilsVide()) //si h.estFeuille
+			return p;
+		if (!h.getInf().isVide())
+			p = transHybToPat(p,h.getInf());
+		if (!h.getSup().isVide())
+			p = transHybToPat(p,h.getSup());
+		
+		HybridesTries iterh = h.getEq();
+		PatriciaTrie iterp = p;
+		int j = 0;
+		//compresser chaine simple de caractères
+		while (!iterh.isVide() && iterh.getInf().isVide() && iterh.getSup().isVide()){
+			j = (int)(iterh.getRacine().getKey());
+			//p.setWord(i, p.getWord(i).concat(String.valueOf(iterh.getRacine().getKey())));
+
+			if (iterh.getRacine().getValue() instanceof ValueNonVide){
+				if (iterh.getEq().isVide()){
+					//p.setWord(i, concatEpsilon(p.getWord(i)));
+					//if (p.getSon(i)!=null)
+						//p.getSon(i).setWord(j, word);
+				}else{
+					PatriciaTrie son = new PatriciaTrie();
+					son.setCase(0, String.valueOf((char)0));
+					p.setSon(i, transHybToPat(son,h.getEq()));
+					return p;
+				}
+			}
+			iterh = iterh.getEq();
+		}
+		
+		if (!iterh.isVide()){
+			if (p.getSon(i) == null)
+				p.setSon(i, transHybToPat(new PatriciaTrie(), iterh));
+			else
+				p.setSon(i, transHybToPat((PatriciaTrie)p.getSon(i), iterh));
+		}
+		return p;
+	}
+	
+	public static void main(String[] s){
+		TestPatricia testeur = new TestPatricia("./shakespeare/test.txt");
+		System.out.println("input: " + testeur.getRawFileList());
+		System.out.println("original pat: " + testeur.getExpectedResult());
+		//System.out.println("original" + testeur.getExpectedResult().get(6));
+		HybridesTries h = Transformation.transformationPatToHyb((PatriciaTrie)testeur.getPatriciaTrie());
+		System.out.println("hyb from trans: " + Ajout.liste(h));
+		System.out.println("verdict PAT_to_HYB: " + Ajout.liste(h).equals(testeur.getExpectedResult()));
+		PatriciaTrie p = transformationHybToPat(h);
+		System.out.println("pat from trans:" + p.listeMots());
+		System.out.println("verdict HYB_to_PAT: " + p.listeMots().equals(testeur.getExpectedResult()));
+
+	}
+}

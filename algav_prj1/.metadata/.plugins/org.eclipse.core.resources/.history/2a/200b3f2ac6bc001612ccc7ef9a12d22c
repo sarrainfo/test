@@ -1,0 +1,35 @@
+package com.algav.affichage;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import com.algav.patricia.PatriciaTrie;
+import com.algav.patricia.TestPatricia;
+
+public class AffichagePatricia {
+
+	public static void afficherPat(PatriciaTrie p, String filename){
+		
+	}
+	
+	public static String fileHeader(String graphName){
+		return ("digraph " + graphName + " {\n" + "node [shape=record];" );
+	}
+	
+	public static String fileFooter(){
+		return "}";
+	}
+	
+	public static String nodeDefinitions(PatriciaTrie p, int i){
+		String output = "";
+		output.concat("patricia"+i+ " [label=\"" + "\"];");
+		return output;
+	}
+	public static void main(String[] s){
+		TestPatricia t = new TestPatricia("./shakespeare/test.txt");
+
+		System.out.println(fileHeader("test"));
+		System.out.println(nodeDefinitions((PatriciaTrie)t.getPatriciaTrie(),0));
+		System.out.println(fileFooter());
+	}
+}

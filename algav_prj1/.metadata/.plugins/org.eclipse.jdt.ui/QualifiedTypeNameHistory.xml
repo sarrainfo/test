@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.algav.patricia.exceptions.OutOfCharacterSetException"/>
+<fullyQualifiedTypeName name="com.algav.patricia.string.IPATWord"/>
+<fullyQualifiedTypeName name="com.algav.patricia.string.IPATStringE"/>
+<fullyQualifiedTypeName name="com.algav.patricia.exceptions.PATStringException"/>
+<fullyQualifiedTypeName name="com.algav.patricia.string.IPATString"/>
+<fullyQualifiedTypeName name="com.algav.patricia.string.PATString"/>
+<fullyQualifiedTypeName name="com.algav.patricia.string.StringManipulation"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="java.time.Clock"/>
+<fullyQualifiedTypeName name="java.util.Random"/>
+<fullyQualifiedTypeName name="com.algav.patricia.TestPatricia"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="com.algav.HybridesTries.HybridesTries"/>
+<fullyQualifiedTypeName name="com.algav.HybridesTries.Node"/>
+<fullyQualifiedTypeName name="com.algav.patricia.exceptions.PatriciaException"/>
+<fullyQualifiedTypeName name="com.algav.HybridesTries.Ajout"/>
+<fullyQualifiedTypeName name="com.algav.patricia.IPatriciaTrie"/>
+<fullyQualifiedTypeName name="com.algav.HybridesTries.ValueNonVide"/>
+<fullyQualifiedTypeName name="com.algav.HybridesTries.ValueVide"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="com.algav.hybride.Ajout"/>
+<fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="com.algav.patricia.PatriciaTrie"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="java.nio.file.Path"/>
+<fullyQualifiedTypeName name="java.nio.file.Paths"/>
+<fullyQualifiedTypeName name="java.io.BufferedOutputStream"/>
+<fullyQualifiedTypeName name="java.io.OutputStream"/>
+<fullyQualifiedTypeName name="java.nio.file.Files"/>
+<fullyQualifiedTypeName name="com.algav.Comparaison4"/>
+<fullyQualifiedTypeName name="com.algav.Calculation4"/>
+<fullyQualifiedTypeName name="java.util.LinkedList"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.algav.patricia.TestComparaisonConstruction"/>
+<fullyQualifiedTypeName name="com.algav.Utility4"/>
+</qualifiedTypeNameHistroy>

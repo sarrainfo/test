@@ -1,0 +1,18 @@
+package com.algav.patricia;
+
+import java.util.LinkedList;
+
+import com.algav.HybridesTries.HybridesTries;
+
+public interface InterfacePatriciaTrie {
+	public void ajout(String word);
+	public LinkedList<String> listeMots();
+	public int comptageMots();
+	public int comptageNil();
+	public boolean recherche(String word);
+	public int hauteur();
+	int prefixe(String strPrefixe);
+	public double profondeurMoyenne();
+	public void suppression(String mot);
+	public IPatriciaTrie fusion(IPatriciaTrie p);
+	}

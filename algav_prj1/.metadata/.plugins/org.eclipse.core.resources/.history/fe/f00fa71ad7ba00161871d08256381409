@@ -1,0 +1,21 @@
+package com.algav.patricia.transformation;
+
+import com.algav.HybridesTries.HybridesTries;
+import com.algav.patricia.PatriciaTrie;
+import static com.algav.patricia.string.StringManipulation.*;
+
+public class TransformationHYBtoPAT {
+	
+	public static PatriciaTrie transformationHybToPat(HybridesTries h){
+		return  transHybToPat(new PatriciaTrie(),  h);
+	}
+	public static PatriciaTrie transHybToPat(PatriciaTrie p, HybridesTries h){
+		int i = (int)(h.getRacine().getKey());
+		p.setWord(i, String.valueOf(h.getRacine().getKey()));
+		if (h.getRacine().getValue().getValeurValue()== -1){
+			
+		}
+		//REMOVE
+		return null;
+	}
+}

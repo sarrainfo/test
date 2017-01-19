@@ -1,0 +1,28 @@
+package com.algav.patricia;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+import com.algav.Calculation4;
+import com.algav.Comparaison4;
+
+public class TestComparaisonConstruction {
+
+	public PatriciaTrie consFusion(LinkedList<String> input ){
+		PatriciaTrie result = new PatriciaTrie();
+
+		for (int i = 0; i < input.size(); ++i){
+			PatriciaTrie p1 = new PatriciaTrie(input.get(i));
+			result.fusion(p1);
+		}
+		return result;
+	}
+	
+	public static void main (){
+		TestPatricia t = new TestPatricia("./shakespeare/cleopatra.txt");
+		
+		System.out.println("test temps fusion: " + Calculation4.constructionPatriciaFusion(t.getRawFileList()) );
+		System.out.println("test temps fusion: " + Calculation4.constructionPatricia(t.getRawFileList2()) );
+
+	}
+}
